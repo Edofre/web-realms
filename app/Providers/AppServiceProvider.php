@@ -16,7 +16,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Add a blade formatter for a boolean attribute
+        \Blade::directive('boolean', function ($expression) {
+            return "<?= $expression ? trans('common.yes') : trans('common.no'); ?>";
+        });
     }
 
     /**
